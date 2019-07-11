@@ -1,0 +1,65 @@
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+/*
+ * Command to publish: gradlew artifactoryPublish
+ */
+publishing {
+    publications {
+        sureshPublication(MavenPublication) {
+            from components.java
+
+            artifact javadocJar
+
+            /*uncomment to publish sources jar*/
+            //artifact sourceJar
+        }
+    }
+}
+
+artifactory {
+    contextUrl = 'http://localhost:8081/artifactory/'
+    //contextUrl = 'https://bezirk.jfrog.io/bezirk/'
+    publish {
+        repository {
+            repoKey = 'NewTestRepo' // The Artifactory repository key to publish to
+            //username = "${binary_archives_adminuser}" // The publisher user name
+           // password = "${binary_archives_adminpassword}" // The publisher password
+            //username = "${binary_archives_admin}" // The publisher user name
+            //password = "${binary_archives_adminuserpassword}" // The publisher password
+            username = "admin" // The publisher user name
+            password = "password" // The publisher password
+            maven = true                //Resolve Maven-style artifacts and descriptors (true by default)
+        }
+        defaults {
+            // Reference to Gradle publications defined in the build script.
+            // This is how we tell the Artifactory Plugin which artifacts should be
+            // published to Artifactory.
+            publications('sureshPublication')
+            publishArtifacts = true
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team': 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishPom = true
+        }
+    }
+}
+
+//for suppressing doclint issues when publishing with java8
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+task sourceJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}

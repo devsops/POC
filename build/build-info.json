@@ -1,0 +1,56 @@
+{
+  "version" : "1.0.1",
+  "name" : "FirstTesting",
+  "number" : "1562227104564",
+  "type" : "GRADLE",
+  "buildAgent" : {
+    "name" : "Gradle",
+    "version" : "4.10.3"
+  },
+  "agent" : {
+    "name" : "Gradle",
+    "version" : "4.10.3"
+  },
+  "started" : "2019-07-04T13:28:24.533+0530",
+  "durationMillis" : 2195,
+  "principal" : "UIE1KOR",
+  "artifactoryPrincipal" : "admin",
+  "artifactoryPluginVersion" : "Unknown",
+  "vcs" : [ ],
+  "licenseControl" : {
+    "runChecks" : false,
+    "includePublishedArtifacts" : false,
+    "autoDiscover" : false,
+    "scopesList" : "",
+    "licenseViolationsRecipientsList" : ""
+  },
+  "modules" : [ {
+    "id" : "com.bosch.pai:FirstTesting:1.0.4",
+    "artifacts" : [ {
+      "type" : "javadoc-jar",
+      "sha1" : "fdab63fa675be484ac465bda0a9b9da84de48065",
+      "md5" : "1cfcfc4860fed08d7b88a50dad563cf0",
+      "name" : "FirstTesting-1.0.4-javadoc.jar"
+    }, {
+      "type" : "jar",
+      "sha1" : "5d6d9fb6fc683e833af534ef914f7c10e6eddda4",
+      "md5" : "285a9cdda391a1287944c58000000265",
+      "name" : "FirstTesting-1.0.4.jar"
+    }, {
+      "type" : "pom",
+      "sha1" : "02ecc52ef5077e604e94a4b2926ac7629844d129",
+      "md5" : "4cfbbf8af6bba36aa0ae381bc8c0aff1",
+      "name" : "FirstTesting-1.0.4.pom"
+    } ],
+    "excludedArtifacts" : [ ],
+    "dependencies" : [ ]
+  } ],
+  "governance" : {
+    "blackDuckProperties" : {
+      "runChecks" : false,
+      "includePublishedArtifacts" : false,
+      "autoCreateMissingComponentRequests" : false,
+      "autoDiscardStaleComponentRequests" : false
+    }
+  }
+}

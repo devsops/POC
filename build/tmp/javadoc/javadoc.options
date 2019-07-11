@@ -1,0 +1,7 @@
+-Xdoclint:none '-quiet'
+-classpath 'C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\build\\classes\\java\\main;C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\build\\resources\\main'
+-d 'C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\build\\docs\\javadoc'
+-doctitle 'FirstTesting 1.0.4 API'
+-quiet 
+-windowtitle 'FirstTesting 1.0.4 API'
+'C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\src\\main\\java\\com\\bosch\\pai\\DemoTest.java'

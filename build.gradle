@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        jcenter {
+            url "http://jcenter.bintray.com/"
+        }
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/vigidroid/maven"
+        }
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        //  flatDir { dirs 'libs' }
+        google()
+    }
+
+    dependencies {
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2'
+        classpath(group: 'org.jfrog.buildinfo', name: 'build-info-extractor-gradle', version: '4.9.7')
+    }
+}
+plugins {
+    id 'java'
+}
+apply plugin: 'org.sonarqube'
+apply from: "${rootDir}/artifactory-jar-publish.gradle"
+
+allprojects {
+    group 'com.bosch.pai'
+    version '1.0.4'
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+}
+
+sonarqube {
+    properties {
+        /*def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-25/android.jar" + ", build/intermediates/exploded-aar*/
+/**//*classes.jar"
+        property "sonar.libraries", libraries
+        property "sonar.java.libraries", libraries
+        property "sonar.java.test.libraries", libraries
+*/
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.projectKey", "firstproject"
+        property "sonar.projectName", "firstproject"
+        property "sonar.projectDescription", "firstproject"
+        property "sonar.projectVersion", "1.0.4"
+        property "sonar.projectBaseDir", "."
+        property "sonar.sources", "C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\src\\main\\java"
+        property "sonar.exclusions", "**/build/**/.class,**/*.png,*.iml, **/*generated*,**/build/**/*.java,**/build/**/*package-info.java"
+        property "sonar.import_unknown_files", true
+        property "sonar.language", "java"
+        property "sonar.sourceEncoding", "UTF-8"
+//        property "sonar.profile", "BezirkIoTProfile"
+        property "sonar.login", "suresh"
+        property "sonar.password", "suresh"
+        property "sonar.android.lint.report", "/build/outputs/lint-results.xml"
+        //property "sonar.binaries", "build/classes"
+        //property "sonar.java.binaries", "build/classes"
+
+        property "sonar.binaries", "build/intermediates/classes/debug"
+        property "sonar.java.binaries", "build/intermediates/classes/debug"
+
+        property "sonar.java.coveragePlugin", "jacoco"
+        //property "sonar.junit.reportPaths", "build/test-results/testDebugUnitTest"
+        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
+        //property "sonar.jacoco.reportPaths", fileTree(dir: "$buildDir", includes: ["jacoco/testDebugUnitTest.exec", "outputs/code-coverage/connected/*coverage.ec"])
+        property "sonar.coverage.plugin", "jacoco"
+
+        //property "sonar.tests", "/src/test/java"
+        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
+        //property "sonar.java.test.libraries", libraries
+        // property "sonar.jacoco.itReportPaths", fileTree(dir: project.projectDir, includes: ["build/jacoco/testDebugUnitTest.exec","outputs/code-coverage/connected/*coverage.ec"])
+    }
+}
+
