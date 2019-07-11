@@ -54,7 +54,7 @@ sonarqube {
         property "sonar.projectDescription", "firstproject"
         property "sonar.projectVersion", "1.0.4"
         property "sonar.projectBaseDir", "."
-        property "sonar.sources", "C:\\Users\\uie1kor\\Desktop\\Repo\\FirstTesting\\src\\main\\java"
+        property "sonar.sources", "C:\Program Files (x86)\Jenkins\workspace\New_pocjob\src\main\java"
         property "sonar.exclusions", "**/build/**/.class,**/*.png,*.iml, **/*generated*,**/build/**/*.java,**/build/**/*package-info.java"
         property "sonar.import_unknown_files", true
         property "sonar.language", "java"
